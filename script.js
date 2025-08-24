@@ -32,3 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+//Move button slightly when scrolling to avoid overlap
+window.addEventListener("scroll", () => {
+  const switchBtn = document.querySelector(".switch-btn");
+  const scrollY = window.scrollY;
+
+  // When scrolling past 100px, raise the button slightly
+  if (scrollY > 100) {
+    switchBtn.style.bottom = "40px";  // float higher
+  } else {
+    switchBtn.style.bottom = "20px";  // default
+  }
+});

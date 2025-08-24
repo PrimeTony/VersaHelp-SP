@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link id="desktopCSS" rel="stylesheet" href="desktop.css">
+<link id="mobileCSS" rel="stylesheet" href="Mobile.css" disabled>
 <script src="script.js"></script>
 
 </head>
@@ -14,6 +16,7 @@
 
 <!-- Navigation -->
 <nav id="navbar">
+    
     <div class="logo">VersaHelp</div>
     <ul class="nav-links">
         <li><a href="#hero">Home</a></li>
@@ -21,17 +24,20 @@
         <li><a href="#team">Team</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#booking">Book</a></li>
-    </ul>
+      </ul>   
 </nav>
-
 <!-- Hero Section -->
 <section id="hero">
     <video autoplay muted loop id="hero-video">
-        <source src="images\VersaHelp Animation White.mp4" type="video/mp4">
+        <source src="images/VersaHelp Animation White.mp4" type="video/mp4">
     </video>
-  
-
 </section>
+
+<button id="switchView" class="switch-btn">
+  <i class="fas fa-mobile-alt"></i> Switch to Mobile
+</button>
+
+
 
 <!-- Services -->
 <section id="services">
@@ -262,6 +268,33 @@
     </div>
 </footer>
 
+<!-- toggle logic -->
+ <script>
+  const switchBtn = document.getElementById("switchView");
+  const desktopCSS = document.getElementById("desktopCSS");
+  const mobileCSS = document.getElementById("mobileCSS");
+
+  // Load last selected mode from localStorage
+  if (localStorage.getItem("viewMode") === "mobile") {
+    mobileCSS.disabled = false;
+    desktopCSS.disabled = true;
+    switchBtn.innerHTML = '<i class="fas fa-desktop"></i> Switch to Desktop';
+  }
+
+  switchBtn.addEventListener("click", () => {
+    if (mobileCSS.disabled) {
+      mobileCSS.disabled = false;
+      desktopCSS.disabled = true;
+      switchBtn.innerHTML = '<i class="fas fa-desktop"></i> Switch to Desktop';
+      localStorage.setItem("viewMode", "mobile");
+    } else {
+      mobileCSS.disabled = true;
+      desktopCSS.disabled = false;
+      switchBtn.innerHTML = '<i class="fas fa-mobile-alt"></i> Switch to Mobile';
+      localStorage.setItem("viewMode", "desktop");
+    }
+  });
+</script>
 
 
 </body>
