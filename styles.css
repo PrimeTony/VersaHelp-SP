@@ -43,6 +43,83 @@ nav { position:sticky; top:0; background:#fff; display:flex; justify-content:spa
 .btn { padding:10px 25px; background:#007bff; color:white; border-radius:5px; text-decoration:none; transition:0.3s;}
 .btn:hover { background:#0056b3; }
 
+/* Hero Section Full Page Background */
+#hero {
+    position: relative;
+    height: 100vh;           /* full viewport height */
+    width: 100%;
+    background: url('images/VersaHelp Logo.png') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    color: white;
+}
+
+/* Overlay for darkening */
+#hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);  /* optional, dark overlay */
+}
+
+/* Hero Content */
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-logo {
+    display: none; /* hide the <img> if you're using it as a background */
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-content .btn {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+}
+
+
+/* Fade-in Animation */
+.fade-in-hero {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInHero 1.5s forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeInHero {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Optional: stagger elements separately */
+.fade-in-hero img {
+    animation: fadeInHero 1.5s forwards 0.2s;
+}
+
+.fade-in-hero h1 {
+    animation: fadeInHero 1.5s forwards 0.5s;
+}
+
+.fade-in-hero .btn {
+    animation: fadeInHero 1.5s forwards 0.8s;
+}
+
+
+
+
+
 /* Sections */
 section { padding:80px 20px; }
 .container { width:90%; max-width:1200px; margin:auto; }
