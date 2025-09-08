@@ -3,239 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile - VersaHelp</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f9;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .profile-container {
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            width: 90%;
-            max-width: 800px;
-        }
-
-        .profile-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        #user-pic {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-right: 15px;
-            border: 2px solid #007bff;
-        }
-
-        #user-name-display {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #007bff;
-        }
-
-        h3 {
-            margin-top: 20px;
-            color: #333;
-        }
-
-        input, textarea {
-            width: 95%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-            button:hover {
-                background: #0056b3;
-            }
-
-        .order-history {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-            margin-top: 10px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .order-item {
-            border-bottom: 1px solid #eee;
-            padding: 8px 0;
-        }
-
-            .order-item:last-child {
-                border-bottom: none;
-            }
-    </style>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <script type="module" src="profile.js"></script>
 </head>
 <body>
+
+
+
     <div class="profile-container">
         <div class="profile-header">
-            <img id="user-pic" src="images/default-avatar.png" alt="Profile">
+            <img id="user-pic" src="C:\Users\Rig\Source\Repos\VersaHelp-SP\images\Profile\Male.webp" alt="Profile">
             <div>
                 <div id="user-name-display">Guest</div>
                 <p>Email: <span id="user-email"></span></p>
             </div>
         </div>
+        <h3>Update Profile Picture</h3>
+        <input type="file" id="profile-pic-input" accept="image/*">
+        <button id="upload-pic-btn">Upload Picture</button>
 
-        <!-- Update Profile -->
+
         <h3>Update Profile</h3>
         <input type="text" id="update-name" placeholder="Update Name">
         <input type="text" id="update-phone" placeholder="Update Phone Number">
         <button id="update-profile-btn">Save Changes</button>
 
-        <!-- Order History -->
         <h3>Your Service Orders</h3>
         <div class="order-history" id="order-list">
             <p>No orders found.</p>
         </div>
 
-        <!-- Feedback -->
         <h3>Leave Feedback</h3>
         <textarea id="feedback-text" rows="3" placeholder="Write your feedback..."></textarea>
         <button id="feedback-btn">Submit Feedback</button>
 
-        <!-- Logout -->
+        <h3>Your Feedback</h3>
+        <div class="order-history" id="feedback-list">
+            <p>No feedback submitted yet.</p>
+        </div>
+
+
         <button id="logout-btn" style="background:red; margin-top:20px;">Logout</button>
     </div>
 
-    <!-- Firebase SDKs -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
-        import { getFirestore, setDoc, doc, getDoc, updateDoc, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
-
-        // ✅ Firebase Config
-        const firebaseConfig = {
-            apiKey: "AIzaSyBevDhtRFYh-z-F4vSQuUb6kGOrbFmSHcw",
-            authDomain: "versahelp-sp.firebaseapp.com",
-            projectId: "versahelp-sp",
-            storageBucket: "versahelp-sp.appspot.com",
-            messagingSenderId: "1069850501427",
-            appId: "1:1069850501427:web:8531a8051d70fb82381e46",
-            measurementId: "G-7CR4B6RR06"
-        };
-
-        // Init Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-
-        // 🔹 Auth State Change
-        onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                document.getElementById("user-email").innerText = user.email;
-
-                // Fetch profile info
-                const userRef = doc(db, "users", user.uid);
-                const userSnap = await getDoc(userRef);
-                if (userSnap.exists()) {
-                    const data = userSnap.data();
-                    document.getElementById("user-name-display").innerText = data.name || "No Name";
-                    document.getElementById("update-name").value = data.name || "";
-                    document.getElementById("update-phone").value = data.phone || "";
-                }
-
-                // Load orders
-                loadOrders(user.uid);
-            } else {
-                window.location.href = "login.html"; // redirect if not logged in
-            }
-        });
-
-        // 🔹 Update Profile
-        document.getElementById("update-profile-btn").addEventListener("click", async () => {
-            const user = auth.currentUser;
-            if (!user) return;
-
-            const name = document.getElementById("update-name").value;
-            const phone = document.getElementById("update-phone").value;
-
-            try {
-                await updateDoc(doc(db, "users", user.uid), {
-                    name: name,
-                    phone: phone
-                });
-                document.getElementById("user-name-display").innerText = name;
-                alert("Profile updated!");
-            } catch (error) {
-                alert(error.message);
-            }
-        });
-
-        // 🔹 Load Orders
-        async function loadOrders(uid) {
-            const ordersRef = collection(db, "orders");
-            const q = query(ordersRef, where("userId", "==", uid));
-            const querySnap = await getDocs(q);
-
-            const orderList = document.getElementById("order-list");
-            orderList.innerHTML = "";
-            if (querySnap.empty) {
-                orderList.innerHTML = "<p>No orders found.</p>";
-            } else {
-                querySnap.forEach(docSnap => {
-                    const order = docSnap.data();
-                    const div = document.createElement("div");
-                    div.classList.add("order-item");
-                    div.innerHTML = `<strong>${order.service}</strong> - ${order.date.toDate().toLocaleString()}<br>Status: ${order.status}`;
-                    orderList.appendChild(div);
-                });
-            }
-        }
-
-        // 🔹 Submit Feedback
-        document.getElementById("feedback-btn").addEventListener("click", async () => {
-            const user = auth.currentUser;
-            if (!user) return;
-
-            const feedback = document.getElementById("feedback-text").value;
-            if (!feedback.trim()) {
-                alert("Please write feedback first.");
-                return;
-            }
-
-            try {
-                await addDoc(collection(db, "feedback"), {
-                    userId: user.uid,
-                    feedback: feedback,
-                    createdAt: new Date()
-                });
-                document.getElementById("feedback-text").value = "";
-                alert("Feedback submitted!");
-            } catch (error) {
-                alert(error.message);
-            }
-        });
-
-        // 🔹 Logout
-        document.getElementById("logout-btn").addEventListener("click", async () => {
-            await signOut(auth);
-            window.location.href = "index.html";
-        });
-    </script>
+    <script type="module" src="js/profile.js"></script>
 </body>
 </html>
