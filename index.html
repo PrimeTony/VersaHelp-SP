@@ -17,83 +17,90 @@
 
 </head>
 <body>
+    <!-- Firebase Initialization and Form Submission Script -->
     <script>
-document.addEventListener("DOMContentLoaded", () => {
-  // ✅ Firebase Config
-  const firebaseConfig = {
-    apiKey: "AIzaSyBevDhtRFYh-z-F4vSQuUb6kGOrbFmSHcw",
-    authDomain: "versahelp-sp.firebaseapp.com",
-    projectId: "versahelp-sp",
-    storageBucket: "versahelp-sp.firebasestorage.app",
-    messagingSenderId: "1069850501427",
-    appId: "1:1069850501427:web:8531a8051d70fb82381e46",
-    measurementId: "G-7CR4B6RR06"
-  };
+        document.addEventListener("DOMContentLoaded", () => {
+            // ✅ Firebase Config
+            const firebaseConfig = {
+                apiKey: "AIzaSyBevDhtRFYh-z-F4vSQuUb6kGOrbFmSHcw",
+                authDomain: "versahelp-sp.firebaseapp.com",
+                projectId: "versahelp-sp",
+                storageBucket: "versahelp-sp.firebasestorage.app",
+                messagingSenderId: "1069850501427",
+                appId: "1:1069850501427:web:8531a8051d70fb82381e46",
+                measurementId: "G-7CR4B6RR06"
+            };
 
-  // ✅ Initialize Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
+            // ✅ Initialize Firebase
+            const app = firebase.initializeApp(firebaseConfig);
+            const db = firebase.firestore();
 
-  // ✅ Check that form exists before attaching listener
-  const form = document.getElementById("bookingForm");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
 
-      // Collect form data
-      const firstName = document.querySelector('input[placeholder="First name *"]').value;
-      const lastName = document.querySelector('input[placeholder="Last name *"]').value;
-      const email = document.querySelector('input[type="email"]').value;
-      const phone = document.querySelector('input[type="tel"]').value;
-      const subject = document.querySelector('input[placeholder="Subject"]').value;
-      const address = document.querySelector('textarea').value;
-      const service = document.getElementById("serviceSelect").value;
-      const date = document.getElementById("appointmentDate").value;
-      const time = document.getElementById("appointmentTime").value;
+            // ✅ Check that form exists before attaching listener
+            const form = document.getElementById("bookingForm");
+            if (form) {
+                form.addEventListener("submit", function (e) {
+                    e.preventDefault();
 
-      console.log("Submitting:", { firstName, lastName, email, phone, subject, address, service, date, time });
+                    // Collect form data
+                    const firstName = document.querySelector('input[placeholder="First name *"]').value;
+                    const lastName = document.querySelector('input[placeholder="Last name *"]').value;
+                    const email = document.querySelector('input[type="email"]').value;
+                    const phone = document.querySelector('input[type="tel"]').value;
+                    const subject = document.querySelector('input[placeholder="Subject"]').value;
+                    const address = document.querySelector('textarea').value;
+                    const service = document.getElementById("serviceSelect").value;
+                    const date = document.getElementById("appointmentDate").value;
+                    const time = document.getElementById("appointmentTime").value;
 
-      db.collection("bookings").add({
-        firstName,
-        lastName,
-        email,
-        phone,
-        subject,
-        address,
-        service,
-        date,
-        time,
-        submittedAt: new Date()
-      })
-      .then(() => {
-        alert("Form submitted successfully!");
-        form.reset();
-      })
-      .catch((error) => {
-        console.error("Error submitting form: ", error);
-        alert("Submission failed.");
-      });
-    });
-  } else {
-    console.warn("Form with ID 'bookingForm' not found.");
-  }
-});
+                    console.log("Submitting:", { firstName, lastName, email, phone, subject, address, service, date, time });
+
+                    db.collection("bookings").add({
+                        firstName,
+                        lastName,
+                        email,
+                        phone,
+                        subject,
+                        address,
+                        service,
+                        date,
+                        time,
+                        submittedAt: new Date()
+                    })
+                        .then(() => {
+                            alert("Form submitted successfully!");
+                            form.reset();
+                        })
+                        .catch((error) => {
+                            console.error("Error submitting form: ", error);
+                            alert("Submission failed.");
+                        });
+                });
+            } else {
+                console.warn("Form with ID 'bookingForm' not found.");
+            }
+        });
     </script>
 
 
 
     <!-- Navigation -->
     <nav id="navbar">
-
         <div class="logo">VersaHelp</div>
         <ul class="nav-links">
             <li><a href="#hero">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#team">Team</a></li>
-            <li><a href="#testimonial-section">Testimonials</a></li>
             <li><a href="#booking">Book</a></li>
         </ul>
+
+        <!-- Profile Image Holder -->
+        <a href="profile.html" class="profile-link">
+            <img src="images/profile.jpg" alt="Profile" class="profile-pic">
+        </a>
     </nav>
+
+
     <!-- Hero Section -->
     <!-- Hero Section with Full-Page Background Image -->
     <section id="hero">
@@ -342,30 +349,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <!-- toggle logic -->
     <script>
-  const switchBtn = document.getElementById("switchView");
-  const desktopCSS = document.getElementById("desktopCSS");
-  const mobileCSS = document.getElementById("mobileCSS");
+        const switchBtn = document.getElementById("switchView");
+        const desktopCSS = document.getElementById("desktopCSS");
+        const mobileCSS = document.getElementById("mobileCSS");
 
-  // Load last selected mode from localStorage
-  if (localStorage.getItem("viewMode") === "mobile") {
-    mobileCSS.disabled = false;
-    desktopCSS.disabled = true;
-    switchBtn.innerHTML = '<i class="fas fa-desktop"></i> Switch to Desktop';
-  }
+        // Load last selected mode from localStorage
+        if (localStorage.getItem("viewMode") === "mobile") {
+            mobileCSS.disabled = false;
+            desktopCSS.disabled = true;
+            switchBtn.innerHTML = '<i class="fas fa-desktop"></i> Switch to Desktop';
+        }
 
-  switchBtn.addEventListener("click", () => {
-    if (mobileCSS.disabled) {
-      mobileCSS.disabled = false;
-      desktopCSS.disabled = true;
-      switchBtn.innerHTML = '<i class="fas fa-desktop"></i> Switch to Desktop';
-      localStorage.setItem("viewMode", "mobile");
-    } else {
-      mobileCSS.disabled = true;
-      desktopCSS.disabled = false;
-      switchBtn.innerHTML = '<i class="fas fa-mobile-alt"></i> Switch to Mobile';
-      localStorage.setItem("viewMode", "desktop");
-    }
-  });
+        switchBtn.addEventListener("click", () => {
+            if (mobileCSS.disabled) {
+                mobileCSS.disabled = false;
+                desktopCSS.disabled = true;
+                switchBtn.innerHTML = '<i class="fas fa-desktop"></i> Switch to Desktop';
+                localStorage.setItem("viewMode", "mobile");
+            } else {
+                mobileCSS.disabled = true;
+                desktopCSS.disabled = false;
+                switchBtn.innerHTML = '<i class="fas fa-mobile-alt"></i> Switch to Mobile';
+                localStorage.setItem("viewMode", "desktop");
+            }
+        });
     </script>
 
 

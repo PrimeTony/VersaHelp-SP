@@ -8,6 +8,56 @@ nav { position:sticky; top:0; background:#fff; display:flex; justify-content:spa
 .nav-links li a { text-decoration:none; color:#007bff; font-weight:600; transition:0.3s;}
 .nav-links li a:hover { color:#0056b3; }
 
+/* Profile Image in Navbar */
+.profile-link {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* round shape */
+    object-fit: cover;
+    border: 2px solid #007bff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .profile-pic:hover {
+        border-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    nav {
+        flex-wrap: wrap;
+        padding: 10px 20px;
+    }
+
+    .nav-links {
+        flex: 1;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .profile-link {
+        margin-left: 0;
+        margin-top: 10px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .profile-pic {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+
+
 /* Switch Button */
 .switch-btn {
   position: fixed;
@@ -16,7 +66,7 @@ nav { position:sticky; top:0; background:#fff; display:flex; justify-content:spa
   background: #007bff;
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 3px 3px;
   border-radius: 8px;
   cursor: pointer;
   z-index: 1000;
@@ -483,7 +533,7 @@ footer {
 
 .footer-bottom {
     text-align: center;
-    font-size: 14px;
+    font-size: 14px; 
     border-top: 1px solid rgba(255,255,255,0.3);
     padding-top: 10px;
 }
