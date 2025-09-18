@@ -1,3 +1,16 @@
+// navbar toggle
+function openNav() {
+    document.getElementById("side-nav").style.width = "250px";
+    document.body.classList.add("side-nav-open");
+}
+
+function closeNav() {
+    document.getElementById("side-nav").style.width = "0";
+    document.body.classList.remove("side-nav-open");
+}
+
+
+
 const scrollObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {

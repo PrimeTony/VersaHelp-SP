@@ -2,90 +2,172 @@
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
 body { scroll-behavior:smooth; line-height:1.6; }
 
-/* Navbar */
-nav { position:sticky; top:0; background:#fff; display:flex; justify-content:space-between; align-items:center; padding:10px 50px; z-index:100; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
-.nav-links { list-style:none; display:flex; gap:20px;}
-.nav-links li a { text-decoration:none; color:#007bff; font-weight:600; transition:0.3s;}
-.nav-links li a:hover { color:#0056b3; }
-
-/* Switch Button */
-.switch-btn {
-  position: fixed;
-  bottom: 20px;   /* initial distance from bottom */
-  right: 20px;
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  z-index: 1000;
-  font-size: 14px;
-  transition: all 0.3s ease;
+/* Hamburger icon */
+.hamburger {
+    font-size: 30px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    color: #007bff;
+    transition: transform 0.3s;
 }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .switch-btn {
-    bottom: 15px;
-    right: 15px;
-    padding: 8px 12px;
-    font-size: 12px;
-  }
+/* Side navigation panel */
+.side-nav {
+    height: 100%;
+    width: 0; /* hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0; /* slides from left */
+    background-color: #007bff;
+    overflow-x: hidden;
+    transition: width 0.4s ease;
+    padding-top: 60px;
+    z-index: 999;
 }
 
+    /* Close button */
+    .side-nav .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        font-size: 36px;
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
 
-/* Hero */
-#hero { position:relative; height:100vh; display:flex; justify-content:center; align-items:center; color:white; text-align:center; overflow:hidden;}
-#hero video { width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;}
-#hero .overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5);}
-.hero-content { position:relative; z-index:2;}
-.btn { padding:10px 25px; background:#007bff; color:white; border-radius:5px; text-decoration:none; transition:0.3s;}
-.btn:hover { background:#0056b3; }
+        .side-nav .close-btn:hover {
+            color: #ffeb3b;
+        }
 
-/* Hero Section Full Page Background */
-#hero {
-    position: relative;
-    height: 100vh;           /* full viewport height */
-    width: 100%;
-    background: url('images/VersaHelp Logo.png') no-repeat center center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-    color: white;
+/* Links inside side nav */
+.side-nav-links {
+    list-style: none;
+    padding: 0 30px;
 }
 
-/* Overlay for darkening */
-#hero .overlay {
-    position: absolute;
+    .side-nav-links li {
+        margin: 20px 0;
+    }
+
+        .side-nav-links li a {
+            text-decoration: none;
+            font-size: 22px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+
+            .side-nav-links li a:hover {
+                color: #ffeb3b;
+            }
+
+/* Optional: dim background when menu is open */
+body.side-nav-open::after {
+    content: "";
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0);  /* optional, dark overlay */
+    background: rgba(0,0,0,0.3);
+    z-index: 998;
 }
 
-/* Hero Content */
+/* Smooth animation for hamburger when clicked */
+body.side-nav-open .hamburger {
+    transform: rotate(90deg);
+}
+
+
+
+
+/* Hero Section with background image */
+#hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh; /* full viewport height */
+    background: url('images/Background.jpg') no-repeat center center/cover;
+    text-align: center;
+    position: relative;
+    color: #fff; /* text color over image */
+    box-sizing: border-box;
+}
+
+    /* Dark overlay to improve text readability */
+    #hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.4); /* subtle dark overlay */
+        z-index: 1;
+    }
+
+/* Hero content */
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 2; /* on top of overlay */
 }
 
-.hero-logo {
-    display: none; /* hide the <img> if you're using it as a background */
+    /* Hero text */
+    .hero-content h1 {
+        font-size: clamp(2rem, 6vw, 6rem);
+        font-weight: 700;
+        text-transform: uppercase;
+        margin: 0;
+        text-shadow: 2px 2px 15px rgba(0,0,0,0.7); /* makes text pop */
+        letter-spacing: 2px;
+    }
+
+/* Fade-in + slide-up animation */
+.fade-in-slide {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlideIn 1.5s forwards;
 }
 
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
+@keyframes fadeSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.hero-content .btn {
-    padding: 12px 30px;
-    font-size: 1.2rem;
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    #hero {
+        height: 80vh;
+    }
 }
+
+@media (max-width: 768px) {
+    #hero {
+        height: 60vh;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2rem, 8vw, 4rem);
+    }
+}
+
+@media (max-width: 480px) {
+    #hero {
+        height: 50vh;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(1.5rem, 10vw, 3rem);
+    }
+}
+
 
 
 /* Fade-in Animation */
