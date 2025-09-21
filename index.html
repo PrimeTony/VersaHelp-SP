@@ -159,7 +159,7 @@
 
 
 
-    <!-- Gallery & Testimonials -->
+    <!-- Gallery-->
     <section id="showcase">
         <div class="container showcase-grid">
 
@@ -190,24 +190,6 @@
 
                 </div>
             </div>
-
-            <!-- Testimonials -->
-            <div class="testimonial-section">
-                <h2 class="fade-up">What Our Clients Say</h2>
-                <div class="testimonial-card">
-                    <p>"VersaHelp babysitting service was amazing! Reliable and caring staff."</p>
-                    <h4>- Sarah K. (11 April)</h4>
-                </div>
-                <div class="testimonial-card">
-                    <p>"They washed my car perfectly, and the booking was so easy!"</p>
-                    <h4>- John M.5 March</h4>
-                </div>
-                <div class="testimonial-card">
-                    <p>"The home duties team saved me so much time. Highly recommended!"</p>
-                    <h4>- Aisha L.</h4>
-                </div>
-            </div>
-
         </div>
     </section>
 
@@ -218,15 +200,15 @@
             <h2 class="fade-up">Booking</h2>
             <form id="bookingForm" class="slide-up">
                 <div class="name-fields">
-                    <input type="text" placeholder="First name *" required>
-                    <input type="text" placeholder="Last name *" required>
+                    <input type="text" name="firstName" placeholder="First name *" required>
+                    <input type="text" name="lastName" placeholder="Last name *" required>
                 </div>
-                <input type="email" placeholder="Email " required>
-                <input type="tel" placeholder="Cell Phone *" required>
-                <input type="text" placeholder="Additional Requests">
-                <textarea placeholder="Address*"></textarea>
+                <input type="email" name="email" placeholder="Email *" required>
+                <input type="tel" name="phone" placeholder="Cell Phone *" required>
+                <input type="text" name="additionalRequests" placeholder="Additional Requests">
+                <textarea name="address" placeholder="Address*" required></textarea>
                 <label for="serviceSelect">Choose a service:</label>
-                <select id="serviceSelect" required>
+                <select id="serviceSelect" name="service" required>
                     <option value="">Services</option>
                     <option value="babysitting">Babysitting</option>
                     <option value="carwash">Car Wash</option>
@@ -234,7 +216,6 @@
                     <option value="transportation">Transportation</option>
                 </select>
 
-                <!-- Date and Time Picker -->
                 <label for="appointmentDate">Choose a date:</label>
                 <input type="date" id="appointmentDate" name="appointmentDate" required>
 
@@ -243,9 +224,35 @@
 
                 <button type="submit" class="btn">Submit</button>
             </form>
+            <p id="formStatus" style="color: green; margin-top: 10px;"></p>
         </div>
     </section>
 
+    <script type="module">
+        import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+
+        // Initialize EmailJS with your public key
+        emailjs.init('fjLsGqCYrQgGqoaTO');
+
+        const bookingForm = document.getElementById('bookingForm');
+        const formStatus = document.getElementById('formStatus');
+
+        bookingForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Send the form
+            emailjs.sendForm('service_uf7dc0l', 'template_odrcpku', bookingForm)
+                .then((result) => {
+                    console.log('Email successfully sent!', result.text);
+                    formStatus.textContent = "Thank you! Your booking has been submitted.";
+                    bookingForm.reset();
+                }, (error) => {
+                    console.error('Failed to send email:', error.text);
+                    formStatus.textContent = "Oops! Something went wrong. Please try again.";
+                    formStatus.style.color = 'red';
+                });
+        });
+    </script>
 
     <!-- Footer -->
     <footer>

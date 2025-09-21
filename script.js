@@ -57,3 +57,49 @@ window.addEventListener("scroll", () => {
     switchBtn.style.bottom = "20px";  // default
   }
 });
+
+//email notification -- @emailjs
+
+// Import EmailJS
+import emailjs from '@emailjs/browser';
+
+// Grab the form element
+const bookingForm = document.getElementById('bookingForm');
+
+bookingForm.addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent page reload
+
+    // Grab all form values
+    const firstName = bookingForm.querySelector('input[placeholder="First name *"]').value;
+    const lastName = bookingForm.querySelector('input[placeholder="Last name *"]').value;
+    const email = bookingForm.querySelector('input[type="email"]').value;
+    const phone = bookingForm.querySelector('input[placeholder="Cell Phone *"]').value;
+    const requests = bookingForm.querySelector('input[placeholder="Additional Requests"]').value;
+    const address = bookingForm.querySelector('textarea[placeholder="Address*"]').value;
+    const service = bookingForm.querySelector('#serviceSelect').value;
+    const appointmentDate = bookingForm.querySelector('#appointmentDate').value;
+    const appointmentTime = bookingForm.querySelector('#appointmentTime').value;
+
+    // Prepare template parameters
+    const templateParams = {
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        phone: phone,
+        requests: requests,
+        address: address,
+        service: service,
+        appointment_date: appointmentDate,
+        appointment_time: appointmentTime
+    };
+
+    // Send email using your EmailJS credentials
+    emailjs.send('service_uf7dc0l', 'template_odrcpku', templateParams, 'fjLsGqCYrQgGqoaTO')
+        .then((response) => {
+            alert('Booking submitted successfully!');
+            bookingForm.reset(); // Clear the form
+        }, (error) => {
+            console.error('Failed to send booking:', error);
+            alert('Failed to submit booking. Please try again later.');
+        });
+});
