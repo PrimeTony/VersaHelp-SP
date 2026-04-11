@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technology Services - VersaHelp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="images/Background.jpg" fetchpriority="high">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tech-services.css">
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js" defer></script>
+  <script defer>
+    window.versahelpFirebaseConfig = {
+      apiKey: "AIzaSyClqnfYhiynXUNU-AJSWGUn8oabdYRhXac",
+      authDomain: "versahelp-4d6dd.firebaseapp.com",
+      projectId: "versahelp-4d6dd",
+      storageBucket: "versahelp-4d6dd.firebasestorage.app",
+      messagingSenderId: "393404198087",
+      appId: "1:393404198087:web:f3f20e0f481cb2e2bc62e2",
+      measurementId: "G-FGYH3FB8FP"
+    };
+
+    window.versahelpDb = null;
+    if (window.firebase && !firebase.apps.length) {
+      firebase.initializeApp(window.versahelpFirebaseConfig);
+    }
+    if (window.firebase) {
+      window.versahelpDb = firebase.firestore();
+    }
+
+    // Set the inbox that should receive Trigger Email notifications.
+    window.versahelpNotificationEmail = "hulisanii99@gmail.com";
+  </script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="corner-logo" href="index.html" aria-label="VersaHelp home">
+    <img src="images/Logo/VersaHelp_v1_nobg.png" alt="VersaHelp logo" loading="eager" decoding="async" fetchpriority="high">
+  </a>
+
+  <div id="side-nav" class="side-nav" aria-label="Primary">
+    <ul class="side-nav-links">
+      <li><a href="index.html#hero">Home</a></li>
+      <li><a href="index.html#services">Core Services</a></li>
+      <li><a href="tech-services.html#offerings">Technology</a></li>
+      <li><a href="about-us.html#team">Team</a></li>
+      <li><a href="about-us.html#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <span class="hamburger" role="button" tabindex="0" aria-label="Toggle navigation menu" aria-expanded="false" onclick="openNav()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openNav();}">&#9776;</span>
+
+  <main id="main-content">
+    <header id="hero" class="tech-hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content fade-in-slide">
+        <p class="eyebrow">VersaHelp Technology Division</p>
+        <h1>Digital Solutions That Move Your Business Forward</h1>
+        <p class="hero-slogan">From day-to-day IT support to full product engineering and cloud delivery.</p>
+        <a class="btn-primary" href="#offerings">Explore Services</a>
+      </div>
+      <div class="hero-grid"></div>
+    </header>
+
+    <section id="offerings">
+      <div class="container">
+        <h2>Our Technology Offerings</h2>
+        <p class="section-intro">Practical, scalable services delivered with the same reliability VersaHelp is known for.</p>
+
+        <div class="offerings-grid">
+          <article class="tech-card offering-card">
+            <img src="images/Tech Support.jpeg" alt="Tech Support" loading="lazy" decoding="async" fetchpriority="low">
+            <h3>Tech Support</h3>
+            <p>Remote and onsite support, troubleshooting, hardware setup, and user onboarding for teams of any size.</p>
+            <button type="button" class="more-toggle" aria-expanded="false">More +</button>
+            <ul class="details-list">
+              <li>Helpdesk and device support</li>
+              <li>Network and printer setup</li>
+              <li>System health checks</li>
+            </ul>
+          </article>
+
+          <article class="tech-card offering-card">
+            <img src="images/Web Development.png" alt="Web Development" loading="lazy" decoding="async" fetchpriority="low">
+            <h3>Web Development</h3>
+            <p>Modern websites and web apps focused on speed, usability, SEO readiness, and business outcomes.</p>
+            <button type="button" class="more-toggle" aria-expanded="false">More +</button>
+            <ul class="details-list">
+              <li>Business and e-commerce sites</li>
+              <li>Custom dashboards and portals</li>
+              <li>Performance optimization</li>
+            </ul>
+          </article>
+
+          <article class="tech-card offering-card">
+            <img src="images/app_development.jpg" alt="Mobile App Development" loading="lazy" decoding="async" fetchpriority="low">
+            <h3>Mobile App Development</h3>
+            <p>Cross-platform and native mobile apps with intuitive UX and stable back-end integration.</p>
+            <button type="button" class="more-toggle" aria-expanded="false">More +</button>
+            <ul class="details-list">
+              <li>Android and iOS experiences</li>
+              <li>API and authentication integration</li>
+              <li>Release and maintenance support</li>
+            </ul>
+          </article>
+
+          <article class="tech-card offering-card">
+            <img src="images/DevOps Services.jpg" alt="DevOps Services" loading="lazy" decoding="async" fetchpriority="low">
+            <h3>DevOps Services</h3>
+            <p>Build and deployment automation that improves release confidence and shortens delivery cycles.</p>
+            <button type="button" class="more-toggle" aria-expanded="false">More +</button>
+            <ul class="details-list">
+              <li>CI/CD pipeline setup</li>
+              <li>Cloud deployments</li>
+              <li>Monitoring and incident readiness</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="container">
+        <h2>How We Work</h2>
+        <div class="workflow-grid">
+          <div class="workflow-step tech-card">
+            <span>01</span>
+            <h3>Discover</h3>
+            <p>We map your business goals, current systems, and technical risks.</p>
+          </div>
+          <div class="workflow-step tech-card">
+            <span>02</span>
+            <h3>Design</h3>
+            <p>We shape an implementation plan that balances speed, quality, and budget.</p>
+          </div>
+          <div class="workflow-step tech-card">
+            <span>03</span>
+            <h3>Deliver</h3>
+            <p>We build, test, and launch with transparent updates throughout the process.</p>
+          </div>
+          <div class="workflow-step tech-card">
+            <span>04</span>
+            <h3>Support</h3>
+            <p>We continue with maintenance, optimization, and on-demand support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta">
+      <div class="container cta-card">
+        <h2>Need a Tech Partner You Can Rely On?</h2>
+        <p>Let’s plan your next digital project with a team that understands operations and technology.</p>
+        <div class="cta-actions">
+          <a class="btn-primary" href="about-us.html#contact">Talk to Us</a>
+          <a class="btn-secondary" href="#consultation">Book a Consultation</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="consultation">
+      <div class="container consultation-card">
+        <h2>Technology Consultation Request</h2>
+        <p class="section-intro">Tell us what you need and our team will contact you with the right plan.</p>
+
+        <form id="consultationForm" class="consultation-form" novalidate>
+          <div class="consultation-grid">
+            <div>
+              <label for="consultFirstName">Name *</label>
+              <input id="consultFirstName" name="firstName" type="text" required>
+            </div>
+            <div>
+              <label for="consultLastName">Last Name *</label>
+              <input id="consultLastName" name="lastName" type="text" required>
+            </div>
+            <div>
+              <label for="consultEmail">Email Address *</label>
+              <input id="consultEmail" name="email" type="email" required>
+            </div>
+            <div>
+              <label for="consultPhone">Cellphone *</label>
+              <input id="consultPhone" name="cellphone" type="tel" required>
+            </div>
+            <div class="full-width">
+              <label for="consultService">Type of Service Needed *</label>
+              <select id="consultService" name="serviceType" required>
+                <option value="">Select a technology service</option>
+                <option value="tech-support">Tech Support</option>
+                <option value="web-development">Web Development</option>
+                <option value="mobile-app-development">Mobile App Development</option>
+                <option value="devops-services">DevOps Services</option>
+              </select>
+            </div>
+            <div class="full-width">
+              <label for="consultOrg">Name of Organisation (if applicable)</label>
+              <input id="consultOrg" name="organisation" type="text">
+            </div>
+            <div class="full-width">
+              <label for="consultAdditional">Additional Information</label>
+              <textarea id="consultAdditional" name="additionalInfo" rows="5" placeholder="Share your goals, timeline, or any technical details."></textarea>
+            </div>
+          </div>
+
+          <label class="consent-row" for="consultConsent">
+            <input id="consultConsent" name="consentToContact" type="checkbox" required>
+            I agree to be contacted using the contact details provided above. *
+          </label>
+
+          <button type="submit" class="btn-primary">Submit Consultation Request</button>
+          <p id="consultationStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h3>VersaHelp Technology</h3>
+        <p>Reliable delivery across support, engineering, and cloud operations.</p>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><i class="fa fa-phone"></i> +27 72 749 2269</p>
+        <p><i class="fa fa-envelope"></i> info@versahelp.co.za</p>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <a href="https://www.facebook.com/profile.php?id=61581204324829" target="_blank" rel="noopener noreferrer" aria-label="Visit VersaHelp Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/27123456789" target="_blank" rel="noopener noreferrer" aria-label="Contact VersaHelp on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 VersaHelp. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
+

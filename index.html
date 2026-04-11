@@ -4,31 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VersaHelp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="images/Background.jpg" fetchpriority="high">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<link id="desktopCSS" rel="stylesheet" href="desktop.css">
-<link id="mobileCSS" rel="stylesheet" href="Mobile.css" disabled>
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <a class="corner-logo" href="index.html" aria-label="VersaHelp home">
+        <img src="images/Logo/VersaHelp_v1_nobg.png" alt="VersaHelp logo" loading="eager" decoding="async" fetchpriority="high">
+    </a>
 
     <!-- Side Navigation Panel -->
-    <div id="side-nav" class="side-nav">
-        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+    <div id="side-nav" class="side-nav" aria-label="Primary">
         <ul class="side-nav-links">
             <li><a href="#hero">Home</a></li>
             <li><a href="#services">Services</a></li>
+            <li><a href="tech-services.html">Technology</a></li>
             <li><a href="#team">Team</a></li>
-            <li><a href="#gallery-testimonials">Gallery</a></li>
-            <li><a href="about us.html">About Us</a></li>
+            <li><a href="#showcase">Gallery</a></li>
+            <li><a href="about-us.html">About Us</a></li>
         </ul>
     </div>
 
     <!-- Hamburger button -->
-    <span class="hamburger" onclick="openNav()">&#9776;</span>
+    <span class="hamburger" role="button" tabindex="0" aria-label="Toggle navigation menu" aria-expanded="false" onclick="openNav()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openNav();}">&#9776;</span>
 
+    <main id="main-content">
 
     <!-- Hero Section -->
     <section id="hero">
@@ -76,28 +82,34 @@
             <h2 class="fade-up">Our Services</h2>
             <div class="services-grid">
                 <div class="service-card slide-up">
-                    <img src="images\babysit.jpeg" alt="Babysitting">
+                    <img src="images/babysit.jpeg" alt="Babysitting" loading="lazy" decoding="async" fetchpriority="low">
                     <h3>Babysitting</h3>
                     <p>Safe and reliable babysitting services for your children.</p>
                     <a href="#booking" class="btn-small">Book Now</a>
                 </div>
                 <div class="service-card slide-up delay-1">
-                    <img src="images\car wash.jpg" alt="Car Wash">
+                    <img src="images/car wash.jpg" alt="Car Wash" loading="lazy" decoding="async" fetchpriority="low">
                     <h3>Car Wash</h3>
                     <p>Professional car cleaning for a spotless ride.</p>
                     <a href="#booking" class="btn-small">Book Now</a>
                 </div>
                 <div class="service-card slide-up delay-2">
-                    <img src="images\home_duties.jpg" alt="Home Duties">
+                    <img src="images/home_duties.jpg" alt="Home Duties" loading="lazy" decoding="async" fetchpriority="low">
                     <h3>Home Duties</h3>
                     <p>Reliable assistance with household chores and tasks.</p>
                     <a href="#booking" class="btn-small">Book Now</a>
                 </div>
                 <div class="service-card slide-up delay-3">
-                    <img src="images\transport.jpeg" alt="Transportation">
+                    <img src="images/transport.jpeg" alt="Transportation" loading="lazy" decoding="async" fetchpriority="low">
                     <h3>Transportation</h3>
                     <p>Convenient and safe transportation services.</p>
                     <a href="#booking" class="btn-small">Book Now</a>
+                </div>
+                <div class="service-card slide-up">
+                    <img src="images/technology unlsed.png" alt="Technology Services" loading="lazy" decoding="async" fetchpriority="low">
+                    <h3>Technology</h3>
+                    <p>Modern tech support, digital solutions, and development services for homes and businesses.</p>
+                    <a href="tech-services.html" class="btn-small">See More</a>
                 </div>
             </div>
         </div>
@@ -112,43 +124,43 @@
 
                     <!-- Team members -->
                     <div class="team-member slide-up">
-                        <img src="images/Team/babysiterblack.jpg" alt="John Doe">
+                        <img src="images/Team/babysiterblack.jpg" alt="John Doe" loading="lazy" decoding="async" fetchpriority="low">
                         <h3>John Doe</h3>
                         <p>Babysitting Specialist</p>
                     </div>
                     <div class="team-member slide-up delay-1">
-                        <img src="images/Team/babysiterblack4.jpg" alt="Jane Smith">
+                        <img src="images/Team/babysiterblack4.jpg" alt="Jane Smith" loading="lazy" decoding="async" fetchpriority="low">
                         <h3>Jane Smith</h3>
                         <p>Car Wash Expert</p>
                     </div>
                     <div class="team-member slide-up delay-2">
-                        <img src="images/Team/babysitterblack2.jpg" alt="Mike Johnson">
+                        <img src="images/Team/babysitterblack2.jpg" alt="Mike Johnson" loading="lazy" decoding="async" fetchpriority="low">
                         <h3>Mike Johnson</h3>
                         <p>Home Duties Specialist</p>
                     </div>
                    
                     <div class="team-member slide-up">
-                        <img src="images/Team/babysiterblack.jpg" alt="John Doe">
+                        <img src="images/Team/babysiterblack.jpg" alt="John Doe" loading="lazy" decoding="async" fetchpriority="low">
                         <h3>John Doe</h3>
                         <p>Babysitting Specialist</p>
                     </div>
                     <div class="team-member slide-up delay-1">
-                        <img src="images/Team/babysiterblack4.jpg" alt="Jane Smith">
+                        <img src="images/Team/babysiterblack4.jpg" alt="Jane Smith" loading="lazy" decoding="async" fetchpriority="low">
                         <h3>Jane Smith</h3>
                         <p>Car Wash Expert</p>
                     </div>
                     <div class="team-member slide-up delay-2">
-                        <img src="images/Team/babysitterblack2.jpg" alt="Mike Johnson">
+                        <img src="images/Team/babysitterblack2.jpg" alt="Mike Johnson" loading="lazy" decoding="async" fetchpriority="low">
                         <h3>Mike Johnson</h3>
                         <p>Home Duties Specialist</p>
                     </div>
                     <div class="team-member slide-up delay-1">
-                        <img src="images/Team/babysiterblack4.jpg" alt="Jane Smith">
+                        <img src="images/Team/babysiterblack4.jpg" alt="Jane Smith" loading="lazy" decoding="async" fetchpriority="low">
                         <h3>Jane Smith</h3>
                         <p>Car Wash Expert</p>
                     </div>
                     <div class="team-member slide-up delay-2">
-                        <img src="images/Team/babysitterblack2.jpg" alt="Mike Johnson">
+                        <img src="images/Team/babysitterblack2.jpg" alt="Mike Johnson" loading="lazy" decoding="async" fetchpriority="low">
                         <h3>Mike Johnson</h3>
                         <p>Home Duties Specialist</p>
                     </div>
@@ -169,25 +181,27 @@
                 <h2 class="fade-up">Our Gallery</h2>
                 <div class="gallery-wrapper">
                     <div class="gallery-slide fade">
-                        <img src="images\Gallery\72C5406C-5C95-468F-B0F3-9990D5FD7FFD.jpg" alt="Babysitting Service">
+                        <video class="gallery-video" autoplay muted loop playsinline preload="none" aria-label="VersaHelp animation intro">
+                            <source src="images/VersaHelp-Animated.mp4" type="video/mp4">
+                        </video>
+                        <div class="gallery-caption">VersaHelp In Motion</div>
+                    </div>
+                    <div class="gallery-slide fade">
+                        <img src="images/Gallery/72C5406C-5C95-468F-B0F3-9990D5FD7FFD.jpg" alt="Babysitting Service" loading="lazy" decoding="async" fetchpriority="low">
                         <div class="gallery-caption">Babysitting Service</div>
                     </div>
                     <div class="gallery-slide fade">
-                        <img src="images\Gallery\F16C234E-BD81-4A24-8C34-8DE92754A647.jpg" alt="Car Wash Service">
+                        <img src="images/Gallery/F16C234E-BD81-4A24-8C34-8DE92754A647.jpg" alt="Car Wash Service" loading="lazy" decoding="async" fetchpriority="low">
                         <div class="gallery-caption">Car Wash Service</div>
                     </div>
                     <div class="gallery-slide fade">
-                        <img src="images\Gallery\F16C234E-BD81-4A24-8C34-8DE92754A647.jpg" alt="Home Duties Service">
+                        <img src="images/Gallery/F16C234E-BD81-4A24-8C34-8DE92754A647.jpg" alt="Home Duties Service" loading="lazy" decoding="async" fetchpriority="low">
                         <div class="gallery-caption">Home Duties Service</div>
                     </div>
                     <div class="gallery-slide fade">
-                        <img src="images\Gallery\F16C234E-BD81-4A24-8C34-8DE92754A647.jpg" alt="Courier">
+                        <img src="images/Gallery/F16C234E-BD81-4A24-8C34-8DE92754A647.jpg" alt="Courier" loading="lazy" decoding="async" fetchpriority="low">
                         <div class="gallery-caption">Courier Service</div>
                     </div>
-
-                    <!-- Navigation -->
-
-                    <a class="next">&#10095;</a>
 
                 </div>
             </div>
@@ -228,9 +242,10 @@
             <p id="formStatus" style="color: green; margin-top: 10px;"></p>
         </div>
     </section>
+    </main>
 
     <script type="module">
-        import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+        import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.esm.js';
 
         // Initialize EmailJS with your public key
         emailjs.init('fjLsGqCYrQgGqoaTO');
@@ -270,8 +285,8 @@
             </div>
             <div class="footer-social">
                 <h4>Follow Us</h4>
-                <a href="https://www.facebook.com/profile.php?id=61581204324829" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://wa.me/27123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61581204324829" target="_blank" rel="noopener noreferrer" aria-label="Visit VersaHelp Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/27123456789" target="_blank" rel="noopener noreferrer" aria-label="Contact VersaHelp on WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -279,34 +294,6 @@
         </div>
     </footer>
 
-    <!-- toggle logic -->
-    <script>
-        const switchBtn = document.getElementById("switchView");
-        const desktopCSS = document.getElementById("desktopCSS");
-        const mobileCSS = document.getElementById("mobileCSS");
-
-        // Load last selected mode from localStorage
-        if (localStorage.getItem("viewMode") === "mobile") {
-            mobileCSS.disabled = false;
-            desktopCSS.disabled = true;
-            switchBtn.innerHTML = '<i class="fas fa-desktop"></i> Switch to Desktop';
-        }
-
-        switchBtn.addEventListener("click", () => {
-            if (mobileCSS.disabled) {
-                mobileCSS.disabled = false;
-                desktopCSS.disabled = true;
-                switchBtn.innerHTML = '<i class="fas fa-desktop"></i> Switch to Desktop';
-                localStorage.setItem("viewMode", "mobile");
-            } else {
-                mobileCSS.disabled = true;
-                desktopCSS.disabled = false;
-                switchBtn.innerHTML = '<i class="fas fa-mobile-alt"></i> Switch to Mobile';
-                localStorage.setItem("viewMode", "desktop");
-            }
-        });
-    </script>
-
-
 </body>
 </html>
+

@@ -4,23 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - VersaHelp</title>
-  <link rel="stylesheet" href="About Us.css">
-    <script src="script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="images/Background.jpg" fetchpriority="high">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="about-us.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="corner-logo" href="index.html" aria-label="VersaHelp home">
+    <img src="images/Logo/VersaHelp_v1_nobg.png" alt="VersaHelp logo" loading="eager" decoding="async" fetchpriority="high">
+  </a>
 
   <!-- Side Navigation (same as main page) -->
-  <div id="side-nav" class="side-nav">
-    <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+  <div id="side-nav" class="side-nav" aria-label="Primary">
     <ul class="side-nav-links">
       <li><a href="index.html#hero">Home</a></li>
       <li><a href="index.html#services">Services</a></li>
-      <li><a href="About Us.html#team">Team</a></li>
-      <li><a href="index.html#gallery-testimonials">Gallery</a></li>
-      <li><a href="About Us.html#Contact">Contact</a></li>
+      <li><a href="tech-services.html">Technology</a></li>
+      <li><a href="about-us.html#team">Team</a></li>
+      <li><a href="index.html#showcase">Gallery</a></li>
+      <li><a href="about-us.html#contact">Contact</a></li>
     </ul>
   </div>
-  <span class="hamburger" onclick="openNav()">&#9776;</span>
+  <span class="hamburger" role="button" tabindex="0" aria-label="Toggle navigation menu" aria-expanded="false" onclick="openNav()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openNav();}">&#9776;</span>
+  <main id="main-content">
 
   <!-- Hero Section -->
   <section id="hero">
@@ -68,17 +78,17 @@
       <div class="team-container">
         <div class="team-grid">
           <div class="team-member">
-            <img src="C:\Users\hulis\Documents\My Projects\VersaHelp-SP\images\Team\Tony.jpeg" alt="Team Member">
+            <img src="images/Team/Tony.jpeg" alt="Khaidzo Tshikalange" loading="lazy" decoding="async" fetchpriority="low">
             <h4>Khaidzo Tshikalange</h4>
             <p>Operation Manager</p>
           </div>
           <div class="team-member">
-            <img src="C:\Users\hulis\Documents\My Projects\VersaHelp-SP\images\Team\Tony.jpeg" alt="Team Member">
+            <img src="images/Team/Tony.jpeg" alt="Hulisani Mbedzi" loading="lazy" decoding="async" fetchpriority="low">
             <h4>Hulisani Mbedzi</h4>
             <p>Support</p>
           </div>
           <div class="team-member">
-            <img src="C:\Users\hulis\Documents\My Projects\VersaHelp-SP\images\Team\Tony.jpeg" alt="Team Member">
+            <img src="images/Team/Tony.jpeg" alt="Bright Tshanduko" loading="lazy" decoding="async" fetchpriority="low">
             <h4>Bright Tshanduko</h4>
             <p>Marketing</p>
           </div>
@@ -114,10 +124,10 @@
       <div class="contact-card">
         <h3>Follow Us</h3>
         <div class="contact-social">
-          <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a><br>
-          <a href="#"><i class="fab fa-twitter"></i> Twitter</a><br>
-          <a href="#"><i class="fab fa-instagram"></i> Instagram</a><br>
-          <a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+          <a href="#" aria-label="Visit VersaHelp on Facebook"><i class="fab fa-facebook-f"></i> Facebook</a><br>
+          <a href="#" aria-label="Visit VersaHelp on Twitter"><i class="fab fa-twitter"></i> Twitter</a><br>
+          <a href="#" aria-label="Visit VersaHelp on Instagram"><i class="fab fa-instagram"></i> Instagram</a><br>
+          <a href="#" aria-label="Visit VersaHelp on LinkedIn"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
         </div>
       </div>
 
@@ -137,7 +147,32 @@
     </div>
   </div>
 </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h3>VersaHelp</h3>
+        <p>Want To Become an accociate? <a href="#"> Send Resume to info@VersaHelp.com </a></p>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p><i class="fa fa-map-marker-alt"></i> 1255 Westview, Pretoria, South Africa</p>
+        <p><i class="fa fa-phone"></i> +27 72 749 2269</p>
+        <p><i class="fa fa-envelope"></i> info@versahelp.co.za</p>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <a href="https://www.facebook.com/profile.php?id=61581204324829" target="_blank" rel="noopener noreferrer" aria-label="Visit VersaHelp Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/27123456789" target="_blank" rel="noopener noreferrer" aria-label="Contact VersaHelp on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 VersaHelp. All Rights Reserved.</p>
+    </div>
+  </footer>
 
 
 </body>
 </html>
+
