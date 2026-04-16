@@ -15,6 +15,18 @@ function closeNav() {
     if (menuTrigger) menuTrigger.setAttribute("aria-expanded", "false");
 }
 
+if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+}
+
+window.addEventListener("load", () => {
+    window.scrollTo(0, 0);
+});
+
+window.addEventListener("pageshow", () => {
+    window.scrollTo(0, 0);
+});
+
 
 
 const scrollObserver = new IntersectionObserver((entries) => {
